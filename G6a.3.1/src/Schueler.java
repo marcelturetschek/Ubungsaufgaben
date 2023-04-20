@@ -76,25 +76,19 @@ public class Schueler implements Comparable<Schueler>, Serializable {
     }
 
     /**
-     * @param o the object to be compared.
-     * @return a negative integer, zero, or a positive integer as this object
-     * is less than, equal to, or greater than the specified object.
-     * @throws NullPointerException if the specified object is null
-     * @throws ClassCastException   if the specified object's type prevents it
-     *                              from being compared to this object.
-     * @apiNote It is strongly recommended, but <i>not</i> strictly required that
-     * {@code (x.compareTo(y)==0) == (x.equals(y))}.  Generally speaking, any
-     * class that implements the {@code Comparable} interface and violates
-     * this condition should clearly indicate this fact.  The recommended
-     * language is "Note: this class has a natural ordering that is
-     * inconsistent with equals."
+     * Note: this class has a natural ordering that is
+     * inconsistent with equals." - es wird zuerst nach Gruppe sortiert,
+     * wenn beide objekte in selber gruppe, wird nach katalognummer sortiert
+     * @param o zu vergleichende Objekt
+     * @return das Ergebnis des Vergleichs (siehe Note)
      */
     @Override
     public int compareTo(Schueler o) {
-        if (this.katalognummer == o.katalognummer) {
-            return 0;
+        if (this.gruppe.compareTo(o.gruppe) != 0) {
+            return this.gruppe.compareTo(o.gruppe);
         }
-        return (this.katalognummer > o.katalognummer) ? 1 : -1;
+
+        return Integer.compare(this.katalognummer, o.katalognummer);
     }
 
     @Override
@@ -108,5 +102,16 @@ public class Schueler implements Comparable<Schueler>, Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(katalognummer, vorname, nachname, gruppe, notenliste);
+    }
+
+    @Override
+    public String toString() {
+        return "Schueler{" +
+                "katalognummer=" + katalognummer +
+                ", vorname='" + vorname + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", gruppe=" + gruppe +
+                ", notenliste=" + notenliste +
+                '}';
     }
 }

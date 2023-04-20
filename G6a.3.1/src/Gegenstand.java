@@ -1,5 +1,5 @@
 /**
- * Lorem Ipsum :)
+ * Enum, mit Gegenständen und Langbezeichnung als Konstanten
  *
  * @author Marcel Turetschek
  * @version 30.03.23
