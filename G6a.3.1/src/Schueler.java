@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Lorem Ipsum :)
+ * Schueler Klasse, mit Notenliste als Map
  *
  * @author Marcel Turetschek
  * @version 30.03.23
@@ -67,10 +67,20 @@ public class Schueler implements Comparable<Schueler>, Serializable {
         return erg;
     }
 
+    /**
+     * Getter für eine Note
+     * @param g Gegenstand
+     * @return Note im Gegenstand
+     */
     public Note note(Gegenstand g) {
         return this.notenliste.get(g);
     }
 
+    /**
+     * Für einen Gegenstand wird eine Note hinzugefügt in die Map
+     * @param g Gegenstand
+     * @param note Note
+     */
     public void noteHinzu(Gegenstand g, Note note) {
         this.notenliste.put(g, note);
     }
@@ -91,6 +101,11 @@ public class Schueler implements Comparable<Schueler>, Serializable {
         return Integer.compare(this.katalognummer, o.katalognummer);
     }
 
+    /**
+     * Equals Methode, die zwei Objekte vergleicht
+     * @param o zu vergleichende Objekt
+     * @return ob Objekte gleich
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -99,6 +114,10 @@ public class Schueler implements Comparable<Schueler>, Serializable {
         return katalognummer == schueler.katalognummer && vorname.equals(schueler.vorname) && nachname.equals(schueler.nachname) && gruppe == schueler.gruppe && Objects.equals(notenliste, schueler.notenliste);
     }
 
+    /**
+     * Hascode des Objekts
+     * @return der Hashcode
+     */
     @Override
     public int hashCode() {
         return Objects.hash(katalognummer, vorname, nachname, gruppe, notenliste);

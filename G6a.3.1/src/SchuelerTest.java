@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Lorem Ipsum :)
+ * Testen von Schueler
  *
  * @author Marcel Turetschek
  * @version 30.03.23
